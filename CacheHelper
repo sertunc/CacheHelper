@@ -1,0 +1,39 @@
+public static class CacheHelper
+    {
+        public static object GetCache(string cacheKey)
+        {
+            return HttpContext.Current.Cache[cacheKey];
+        }
+
+        public static void SetCache(string cacheKey, object cacheValue, double timeout)
+        {
+            HttpContext.Current.Cache.Insert(cacheKey,
+                                             cacheValue,
+                                             null,
+                                             DateTime.Now.AddDays(timeout),
+                                             Cache.NoSlidingExpiration);
+        }
+
+        public static void SetCacheMax(string cacheKey, object cacheValue)
+        {
+            HttpContext.Current.Cache.Insert(cacheKey,
+                                             cacheValue,
+                                             null,
+                                             DateTime.MaxValue,
+                                             Cache.NoSlidingExpiration);
+        }
+
+        public static void SetCacheMinute(string cacheKey, object cacheValue, double timeout)
+        {
+            HttpContext.Current.Cache.Insert(cacheKey,
+                                             cacheValue,
+                                             null,
+                                             DateTime.Now.AddMinutes(timeout),
+                                             Cache.NoSlidingExpiration);
+        }
+
+        public static object RemoveCache(string cacheKey)
+        {
+            return HttpContext.Current.Cache.Remove(cacheKey);
+        }
+    }
