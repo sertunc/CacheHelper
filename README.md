@@ -1,2 +1,2 @@
 # CacheHelper
-CacheHelper verileri cachekemek için kullanılır
+CacheHelper verileri cachelemek için kullanılır
